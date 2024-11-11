@@ -1,15 +1,16 @@
 {
-  "name": "elasticsearch-sink-connector",
+  "name": "elasticsearch-sink",
   "config": {
     "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
     "tasks.max": "1",
-    "topics": "sensor-input",  
-    "connection.url": "http://elasticsearch:9200",
-    "type.name": "_doc",
+    "topics": "sensors",
     "key.ignore": "true",
     "schema.ignore": "true",
-    "write.method": "upsert",
-    "batch.size": "2000",
-    "max.in.flight.requests": "5"
+    "connection.url": "http://elastic:9200",
+    "type.name": "_doc",
+    "name": "elasticsearch-sink",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "index.name": "sensors"
   }
 }
